@@ -1,0 +1,175 @@
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  background: #f5f5f5;
+  margin-bottom: 8px;
+  padding: 12px;
+  border-radius: 4px;
+}
+.datepicker-form {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 100%;
+  justify-content: center;
+}
+.datepicker-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+.datepicker-form button {
+  padding: 8px 16px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 180px;
+  min-width: 80px;
+  transition: background 0.3s ease;
+
+}
+.datepicker-form button:hover {
+  background: #1565c0;
+}
+.invoices-table-container {
+  max-width: 100%;
+  height: fit-content;
+  margin: 0 auto 24px auto;
+  border-radius: 16px;
+  overflow-y: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  background: #fff;
+}
+.invoices-table {
+  width: 100%;
+  max-height: 50vh;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 16px;
+}
+.invoices-table thead, .invoices-table tfoot {
+  background: #f5f5f5;
+  position: sticky;
+  z-index: 2;
+  overflow-wrap: initial;
+}
+.invoices-table thead {
+  top: 0;
+}
+.invoices-table tfoot {
+  bottom: 0;
+  top: auto;
+}
+.invoices-table th, .invoices-table tfoot td {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  background: #f0f0f0;
+}
+.invoices-table tbody {
+  display: block;
+  max-height: 320px;
+  overflow-y: auto;
+  width: 100%;
+}
+.invoices-table thead, .invoices-table tfoot, .invoices-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.invoices-table tr {
+  border-bottom: 1px solid #eee;
+}
+.invoices-table tr:last-child {
+  border-bottom: none;
+}
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  margin: 40px 0;
+}
+.loading-header {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #1976d2;
+  background: #f5f5f5;
+  font-weight: 500;
+}
+
+.invoices-table tr:hover {
+  border-bottom: 1px solid #d4d3d3;
+}
+.mat-mdc-paginator, .mat-mdc-paginator-container {
+  background: #e2e2e2;
+  border-top: 1px solid #e0e0e0;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 12px 8px rgba(1,1,1,1);
+}
+.mat-mdc-paginator {
+  background: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 10;
+  position: relative;
+}
+.mat-mdc-paginator-container {
+  background: transparent;
+  border-radius: 0 0 16px 16px;
+  box-shadow: none;
+}
+.mat-mdc-paginator .mat-mdc-paginator-range-label {
+  color: #555;
+}
+.filters-container {
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  padding: 24px 20px 16px 20px;
+  margin: 0 auto 24px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.filters-container .mat-form-field {
+  min-width: 180px;
+  margin-bottom: 0;
+}
+.filters-container button {
+  margin-top: 8px;
+}
+.loading-table-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  font-size: 1.2rem;
+  color: #1976d2;
+  font-weight: 500;
+  background: #f5f5f5;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* Para scroll horizontal en pantallas pequeñas */
+@media (max-width: 400px) {
+  .invoices-table-scroll {
+    overflow-x: auto;
+    width: 100%;
+    display: block;
+  }
+  .invoices-table {
+    min-width: 600px;
+    /* Ajusta según tus columnas */
+  }
+}
