@@ -160,3 +160,16 @@ li {
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
+
+/* Para scroll horizontal en pantallas pequeñas */
+@media (max-width: 400px) {
+  .invoices-table-scroll {
+    overflow-x: auto;
+    width: 100%;
+    display: block;
+  }
+  .invoices-table {
+    min-width: 600px;
+    /* Ajusta según tus columnas */
+  }
+}
