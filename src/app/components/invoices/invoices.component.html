@@ -1,0 +1,75 @@
+<div class="filters-container">
+  <form (submit)="onSubmit($event)" class="datepicker-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Rango rápido</mat-label>
+      <select matNativeControl [(ngModel)]="selectedRange" name="quickRange" (change)="setRange(selectedRange)">
+        <option value="">Selecciona un rango</option>
+        <option *ngFor="let range of quickRanges" [value]="range.value">{{ range.label }}</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha inicial</mat-label>
+      <input matInput [matDatepicker]="picker1" [(ngModel)]="startDate" name="startDate" required [max]="today" />
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha final</mat-label>
+      <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" name="endDate" required [max]="today" />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Buscar</button>
+  </form>
+</div>
+
+<div *ngIf="loading" class="invoices-table-container">
+  <div class="loading-table-message">
+    Cargando facturas...
+  </div>
+</div>
+<div *ngIf="error" class="invoices-table-container">
+  <div class="loading-table-message">
+    <span>Error al cargar las facturas: {{ error }}</span>
+  </div>
+</div>
+
+<div *ngIf="!loading && !error && invoices.length">
+  <table mat-table [dataSource]="invoices" class="mat-elevation-z8 invoices-table">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>#</th>
+      <td mat-cell *matCellDef="let invoice">{{ invoice.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="invoice_number">
+      <th mat-header-cell *matHeaderCellDef>Factura</th>
+      <td mat-cell *matCellDef="let invoice">{{ invoice.invoice_number }}</td>
+    </ng-container>
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let invoice">{{ invoice.total }}</td>
+    </ng-container>
+    <ng-container matColumnDef="invoice_date">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let invoice">{{ invoice.invoice_date | date:'yyyy-MM-dd' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let invoice">{{ invoice.status }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+    [length]="totalRecords"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[10, 20, 50]"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
+
+<div *ngIf="!loading && !error && !invoices.length" class="invoices-table-container">
+  <div class="loading-table-message">
+    No se encontraron facturas para el rango seleccionado.
+  </div>
+</div>

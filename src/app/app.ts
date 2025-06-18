@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
-// import { InvoicesComponent } from './invoices.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,6 @@ import { Footer } from './components/footer/footer';
     RouterOutlet,
     Header,
     Footer
-    // InvoicesComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
